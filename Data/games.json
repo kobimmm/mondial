@@ -1,0 +1,3 @@
+﻿[
+	{ gameId: '1', firstTeamLabel: 'BRA', secondTeamLabel: 'CRO', firstTeamScore: ko.observable(""), secondTeamScore: ko.observable(""), firstTeamFlag: 'images/Flags/medium/Brazil.png', secondTeamFlag: 'images/Flags/medium/Georgia.png' }
+]

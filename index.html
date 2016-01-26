@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Brazil 2014 Mondial</title>
+    <link href="styles/css/style.css" rel="stylesheet" />
+    <script src="third-parties/knockout/knockout-3.1.0.js"></script>
+    <link href="third-parties/animate/animate.css" rel="stylesheet" />
+    <script src="third-parties/jQuery/jquery-1.8.3.min.js"></script>
+    <script src="third-parties/jStorage/jstorage.js"></script>
+    <script src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+</head>
+<body>
+    <header>
+        <span class="indicator-text">Actual User:</span> <span class="indicator-text" id="displayedUser" data-bind="text:selectedUser() ? selectedUser().userName : 'No User Chosen'"></span> 
+        <!--<select class="selectUser" data-bind="options:availableUsers"></select>-->
+        <select class="selectUser" data-bind="options: availableUsers, optionsText: 'userName',value: selectedUser, optionsCaption: 'Choose...', event: {change:showHandicapping}"></select>
+    </header>
+    <section class="user-manager">
+        <div id="singup-icon">Sign Up / Sign In<img class="singup-icon" src="images/signup-icon.png" /></div>
+        <label style="clear: both;">username:</label><input type="text" id="newUserName" />
+        <label>password:</label><input type="password" id="newPassword" />
+        <label>Email:</label><input type="email" id="newEmail" />
+        <input type="button" value="Sign up" id="signUp" data-bind="click:signUp" />
+        <input type="button" value="Login" id="signIn" data-bind="click:signIn" />
+    </section>
+    <section class="center">
+        <div class="games center animated bounceInLeft" data-bind="foreach:games">
+            <div class="game">
+                <div class="first-label"><label data-bind="text: firstTeamLabel">-</label></div>
+                <img data-bind="attr:{src:firstTeamFlag}" />
+                <input type="number" value="0" pattern="\d+" data-bind="value:firstTeamScore" /><!--when need to display the user guesses-->
+                <span>VS</span>
+                <input type="number" value="0" pattern="\d+" data-bind="value:secondTeamScore" /><!--when need to display the user guesses-->
+                <img data-bind="attr:{src:secondTeamFlag}" />
+                <div class="second-label"><label data-bind="text: secondTeamLabel">-</label></div>
+            </div>
+        </div>
+    </section>
+    <section class="controls center animated bounceInRight">
+        <input type="button" value="save" id="saveHandicapping" data-bind="click:saveHandicapping" class="hide" />
+        <input type="button" value="clear" id="showHandicapping" data-bind="click:clearHandicapping" class="hide" />
+        <img src="images/Boogito_Logo_170x40.png" />
+    </section>
+    
+        
+    <script>
+
+        //$(".animated").on("click", function (event) {
+        //    $(this).removeClass("bounceInLeft").addClass("bounceOutRight");
+        //});
+
+        //$("#saveHandicapping").on("click", function (event) {
+        //    $.jStorage.set("Kobi", "{ gameId: '2', firstTeamLabel: 'BRA', secondTeamLabel: 'CRO', firstTeamScore:'1', secondTeamScore: '2'");
+        //});
+
+        
+
+        //ko.applyBindings(new AppViewModel());
+    </script>   
+    <script src="Data/gamesModel.js"></script>
+    <script src="flows/view.js"></script>
+</body>
+</html>
